@@ -15,6 +15,7 @@
 
 - 2021-9-8 init commit.
 - 2021-9-17 experiment 1
+- 2021-9-21 reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
 
 ### Experiment Content
 
