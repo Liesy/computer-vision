@@ -17,7 +17,9 @@
 - 2021-9-17 experiment 1
 - 2021-9-21
   reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
-- 2021-9-24 experiment 2 [Reference: [理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)]
+- 2021-9-24 experiment 2
+    - Reference1：[理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)
+    - Reference2：[理解opencv中的双线性插值](https://www.cnblogs.com/wxl845235800/p/9608736.html)
 
 ### Experiment Content
 
