@@ -12,45 +12,45 @@ double bilinear(int a, int b, int c, int d, double dx, double dy) {
 
 Mat morphing(const Mat &src) {
     Mat processed = Mat::zeros(src.size(), src.type());
-    int row = src.rows, col = src.cols;
-    for (int x = 0; x < row; x++) {
-        for (int y = 0; y < col; y++) {
+    int height = src.rows, width = src.cols;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
             //坐标中心归一化
-            double X = x / ((row - 1) / 2.0) - 1.0;
-            double Y = y / ((col - 1) / 2.0) - 1.0;
-            double r = sqrt(X * X + Y * Y);
+            double X = x / ((width - 1) / 2.0) - 1.0;
+            double Y = y / ((height - 1) / 2.0) - 1.0;
+            double r = sqrt(Y * Y + X * X);
 
             if (r >= 1) {
                 for (int c = 0; c < 3; c++)
-                    processed.at<Vec3b>(x, y)[c] = saturate_cast<uchar>(src.at<Vec3b>(x, y)[c]);
+                    processed.at<Vec3b>(y, x)[c] = saturate_cast<uchar>(src.at<Vec3b>(y, x)[c]);
             } else {
-                double theta = X * X + Y * Y - 2.0 * sqrt(X * X + Y * Y) + 1.0;//(1-r)^2=r^2-2r+1
+                double theta = Y * Y + X * X - 2.0 * sqrt(Y * Y + X * X) + 1.0;//(1-r)^2=r^2-2r+1
                 double x_ = cos(theta) * X - sin(theta) * Y;
                 double y_ = sin(theta) * X + cos(theta) * Y;
                 //坐标还原
-                x_ = (x_ + 1.0) * ((row - 1) / 2.0);
-                y_ = (y_ + 1.0) * ((col - 1) / 2.0);
+                x_ = (x_ + 1.0) * ((width - 1) / 2.0);
+                y_ = (y_ + 1.0) * ((height - 1) / 2.0);
 
-                if (x_ < 0 || y_ < 0 || x_ >= row || y >= col) {
+                if (x_ < 0 || y_ < 0 || x_ >= width || y_ >= height) {
                     for (int c = 0; c < 3; c++)
-                        processed.at<Vec3b>(x, y)[c] = saturate_cast<uchar>(0);
+                        processed.at<Vec3b>(y, x)[c] = saturate_cast<uchar>(0);
                 } else {//双线性插值
                     int x1 = (int) x_, y1 = (int) y_;//左上角像素坐标
                     for (int c = 0; c < 3; c++) {
-                        if (x1 == row - 1 || y1 == col - 1)
-                            processed.at<Vec3b>(x, y)[c] = saturate_cast<uchar>(src.at<Vec3b>(x1, y1)[c]);
+                        if (x1 == width - 1 || y1 == height - 1)
+                            processed.at<Vec3b>(y, x)[c] = saturate_cast<uchar>(src.at<Vec3b>(y1, x1)[c]);
                         else {
-                            int aa = src.at<Vec3b>(x1, y1)[c];
-                            int bb = src.at<Vec3b>(x1, y1 + 1)[c];
-                            int cc = src.at<Vec3b>(x1 + 1, y1)[c];
-                            int dd = src.at<Vec3b>(x1 + 1, y1 + 1)[c];
+                            int aa = src.at<Vec3b>(y1, x1)[c];
+                            int bb = src.at<Vec3b>(y1, x1 + 1)[c];
+                            int cc = src.at<Vec3b>(y1 + 1, x1)[c];
+                            int dd = src.at<Vec3b>(y1 + 1, x1 + 1)[c];
                             double dx = x_ - (double) x1;
                             double dy = y_ - (double) y1;
-                            //  aa -------- cc
+                            //  aa -------- bb
                             //  |  *(x_,y_) |
                             //  |           |
-                            //  bb -------- dd
-                            processed.at<Vec3b>(x, y)[c] = saturate_cast<uchar>(bilinear(aa, bb, cc, dd, dx, dy));
+                            //  cc -------- dd
+                            processed.at<Vec3b>(y, x)[c] = saturate_cast<uchar>(bilinear(aa, bb, cc, dd, dx, dy));
                         }
                     }
                 }
