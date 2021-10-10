@@ -20,6 +20,11 @@
 - 2021-9-24 experiment 2
     - Reference1：[理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)
     - Reference2：[理解opencv中的双线性插值](https://www.cnblogs.com/wxl845235800/p/9608736.html)
+- 2021-10-10 experiment 3
+    - Reference1：[copyMakeBorder函数详解](https://blog.csdn.net/qq_36560894/article/details/105416273)
+    - Reference2：[高斯滤波(GaussianFilter)原理及C++实现](https://blog.csdn.net/weixin_40647819/article/details/89742936)
+    - Reference3：[积分图实现快速均值滤波](https://blog.csdn.net/weixin_40647819/article/details/88775598)
+    - Reference4：[OpenCV图像数据类型](https://www.jianshu.com/p/437c5031615c)
 
 ### Experiment Content
 
