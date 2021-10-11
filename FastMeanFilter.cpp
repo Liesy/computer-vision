@@ -72,10 +72,23 @@ void windowSizeController(int val, void *) {
     }
 }
 
+void timeCompare() {
+    double t, t1, t2;
+    t = (double) getTickCount();
+    FastMeanFilter(img, processed, 49);
+    t1 = (double) getTickCount();
+    boxFilter(img, processed, -1, Size(49, 49));
+    t2 = (double) getTickCount();
+    cout << "my program finished in " << ((t1 - t) * 1000.0) / getTickFrequency() << "ms" << '\n';
+    cout << "boxFilter finished in " << ((t2 - t1) * 1000.0) / getTickFrequency() << "ms" << '\n';
+}
+
 int main() {
     ios::sync_with_stdio(false);
 
     img = imread("/home/liyang/图片/eileen.png");
+
+    timeCompare();
 
     namedWindow("original img", WINDOW_AUTOSIZE);
     moveWindow("original img", 200, 200);
