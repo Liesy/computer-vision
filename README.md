@@ -29,6 +29,7 @@
     - Reference1：[鼠标响应setMouseCallback的用法](https://blog.csdn.net/qq_29540745/article/details/52562101)
     - Reference2：[基于直方图的目标跟踪](https://github.com/devWangBin/CV-image_processing)
     - Reference3：[RGB三通道直方图的计算与绘制](https://blog.csdn.net/Derical/article/details/108887966)
+    - Reference4：[直方图匹配：巴氏系数](https://blog.csdn.net/jameschen9051/article/details/95895256)
 
 ### Experiment Content
 
