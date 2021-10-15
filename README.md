@@ -25,6 +25,10 @@
     - Reference2：[高斯滤波(GaussianFilter)原理及C++实现](https://blog.csdn.net/weixin_40647819/article/details/89742936)
     - Reference3：[积分图实现快速均值滤波](https://blog.csdn.net/weixin_40647819/article/details/88775598)
     - Reference4：[OpenCV图像数据类型](https://www.jianshu.com/p/437c5031615c)
+- 2021-10-15 experiment 4-1
+    - Reference1：[鼠标响应setMouseCallback的用法](https://blog.csdn.net/qq_29540745/article/details/52562101)
+    - Reference2：[基于直方图的目标跟踪](https://github.com/devWangBin/CV-image_processing)
+    - Reference3：[RGB三通道直方图的计算与绘制](https://blog.csdn.net/Derical/article/details/108887966)
 
 ### Experiment Content
 
