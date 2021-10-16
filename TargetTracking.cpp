@@ -136,12 +136,12 @@ double compareHistogram(const Mat &compImg) {
 
     double res[3] = {0};
     for (int i = 0; i < 256; i++) {
-        res[0] += sqrt(target_Hist[i][0] * temp[i][0]);
-        res[1] += sqrt(target_Hist[i][1] * temp[i][1]);
-        res[2] += sqrt(target_Hist[i][2] * temp[i][2]);
+        res[0] += pow(target_Hist[i][0] - temp[i][0], 2);
+        res[1] += pow(target_Hist[i][1] - temp[i][1], 2);
+        res[2] += pow(target_Hist[i][2] - temp[i][2], 2);
     }
 
-    return ((res[0] + res[1] + res[2]) / 3);
+    return sqrt(res[0]) + sqrt(res[1]) + sqrt(res[2]);
 }
 
 void tracking() {
@@ -149,9 +149,9 @@ void tracking() {
     int tar_rows = abs(pointEnd.y - pointStart.y);
     cout << "target size = " << tar_rows << "*" << tar_cols << '\n';
 
-    //目标搜索区域设定为原区域的周围且面积为原来三倍
-    int X1 = pointStart.x - tar_cols;
-    int X2 = pointStart.x + tar_cols;
+    //目标搜索区域
+    int X1 = pointStart.x - 2 * tar_cols;
+    int X2 = pointStart.x + 2 * tar_cols;
     int Y1 = pointStart.y - tar_rows;
     int Y2 = pointStart.y + tar_rows;
     //越界检查
@@ -176,17 +176,17 @@ void tracking() {
     int w = static_cast<int>(video.get(CAP_PROP_FRAME_WIDTH));
     int h = static_cast<int>(video.get(CAP_PROP_FRAME_HEIGHT));
     VideoWriter write;
-    int codec = VideoWriter::fourcc('X', '2', '6', '4');
-    write.open("/home/liyang/视频/diana_detection.avi", codec, fps, Size(w, h), true);
+    int codec = VideoWriter::fourcc('D', 'I', 'V', 'X');
+    write.open("/home/liyang/视频/diana_detection.mp4v", codec, fps, Size(w, h), true);
 
-//    namedWindow("tracking", WINDOW_AUTOSIZE);
-//    moveWindow("tracking", 1250, 200);
+    namedWindow("tracking", WINDOW_AUTOSIZE);
+    moveWindow("tracking", 1250, 200);
 
     while (true) {
         video >> img;
         if (!img.data || waitKey(pauseTime) == 27) break;//NOLINT 图像为空或Esc键按下退出播放
 
-        double minDist = 1.0;//直方图对比的相似值
+        double minDist = 1.0 * INT_MAX;//直方图对比的相似值
 
         for (int srh_y = Y1; srh_y <= Y2; srh_y += 10) {
             for (preStart.x = X1, preStart.y = srh_y; preStart.x <= X2; preStart.x += 10) {
@@ -206,21 +206,18 @@ void tracking() {
             }
         }
 
-        //在原始视频图像上刷新矩形，只有当与目标直方图很相似时才更新起点搜索区域，满足目标进行移动的场景
-        if (minDist < 0.5) {
-            X1 = get1.x - tar_cols;
-            X2 = get1.x + tar_cols;
-            Y1 = get1.y - tar_rows;
-            Y2 = get1.y + tar_rows;
-            X1 = X1 < 0 ? 0 : X1;
-            Y1 = Y1 < 0 ? 0 : Y1;
-        }
-        if (minDist < 0.7)
-            rectangle(img, get1, get2, Scalar(0, 0, 255), 2);
+        X1 = get1.x - 2 * tar_cols;
+        X2 = get1.x + 2 * tar_cols;
+        Y1 = get1.y - tar_rows;
+        Y2 = get1.y + tar_rows;
+        X1 = X1 < 0 ? 0 : X1;
+        Y1 = Y1 < 0 ? 0 : Y1;
+
+        rectangle(img, get1, get2, Scalar(0, 0, 255), 2);
 
         //写入一帧
         write.write(img);
-//        imshow("tracking", img);
+        imshow("tracking", img);
     }
 
     video.release();
