@@ -30,6 +30,11 @@
     - Reference2：[基于直方图的目标跟踪](https://github.com/devWangBin/CV-image_processing)
     - Reference3：[RGB三通道直方图的计算与绘制](https://blog.csdn.net/Derical/article/details/108887966)
     - Reference4：[直方图匹配：巴氏系数](https://blog.csdn.net/jameschen9051/article/details/95895256)
+- 2021-10-22 experiment 5
+    - Reference1：[种子填充算法](https://www.bbsmax.com/A/amd0AVWzge/)
+    - Reference2：[连通区域快速标记的two-pass算法及其实现](https://blog.csdn.net/hemeinvyiqiluoben/article/details/39854315)
+    - Reference3：[二值图连通域快速标记算法](https://www.cnblogs.com/ailitao/p/11787513.html)
+    - Reference4：[OpenCV连通区域分析](https://blog.csdn.net/icvpr/article/details/10259577)
 
 ### Experiment Content
 
@@ -73,3 +78,14 @@
 2. 基于颜色分布的交互图像分割
     - 基于由用户交互笔刷标记的前、背景像素（图中黄绿区域），计算前、背景的颜色分布，并用于估计未标记像素属于前景和背景的概率。
     - 颜色分布可以用直方图或者高斯混合模型（GMM）表示。如果用GMM，可以基于OpenCV的实现估计GMM参数。
+
+#### Exp 5 (2021.10.22 -- 2021.10.26)
+
+1. 连通域
+    - 实现一个8连通的快速连通域算法，并基于该算法对测试图像进行以下处理：
+        - 计算白色连通区域的个数。
+        - 删除较小的白色连通域，只保留最大的一个。
+
+2. 距离变换
+    - 了解OpenCV的距离变换函数distanceTransform。
+    - 使用合适的测试图像进行测试，将距离场可视化输出。
