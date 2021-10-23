@@ -32,9 +32,10 @@
     - Reference4：[直方图匹配：巴氏系数](https://blog.csdn.net/jameschen9051/article/details/95895256)
 - 2021-10-22 experiment 5
     - Reference1：[种子填充算法](https://www.bbsmax.com/A/amd0AVWzge/)
-    - Reference2：[连通区域快速标记的two-pass算法及其实现](https://blog.csdn.net/hemeinvyiqiluoben/article/details/39854315)
+    - Reference2：[连通区域快速标记的two-pass算法及其实现](https://www.cnblogs.com/riddick/p/8280883.html)
     - Reference3：[二值图连通域快速标记算法](https://www.cnblogs.com/ailitao/p/11787513.html)
     - Reference4：[OpenCV连通区域分析](https://blog.csdn.net/icvpr/article/details/10259577)
+    - Reference5：[OpenCV距离变换函数：distanceTransform](https://www.jianshu.com/p/77a773d97987)
 
 ### Experiment Content
 
