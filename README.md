@@ -38,6 +38,10 @@
     - Reference5：[OpenCV距离变换函数：distanceTransform](https://www.jianshu.com/p/77a773d97987)
 - 2021-10-29 experiment 6
     - Reference1：[cvtColor和convertTo函数的区别](https://blog.csdn.net/qq_22764813/article/details/52135686)
+    - Reference2：[霍夫圆检测](https://zhuanlan.zhihu.com/p/134452506)
+    - Reference3：[霍夫梯度法1](https://www.cnblogs.com/bjxqmy/p/12333022.html)
+    - Reference4：[霍夫梯度法2](https://blog.csdn.net/qq_41498261/article/details/103104035)
+    - Reference5：[HoughCircles源码分析](https://blog.csdn.net/zhaocj/article/details/50454847)
 
 ### Experiment Content
 
