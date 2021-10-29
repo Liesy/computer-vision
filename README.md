@@ -36,6 +36,8 @@
     - Reference3：[二值图连通域快速标记算法](https://www.cnblogs.com/ailitao/p/11787513.html)
     - Reference4：[OpenCV连通区域分析](https://blog.csdn.net/icvpr/article/details/10259577)
     - Reference5：[OpenCV距离变换函数：distanceTransform](https://www.jianshu.com/p/77a773d97987)
+- 2021-10-29 experiment 6
+    - Reference1：[cvtColor和convertTo函数的区别](https://blog.csdn.net/qq_22764813/article/details/52135686)
 
 ### Experiment Content
 
@@ -90,3 +92,10 @@
 2. 距离变换
     - 了解OpenCV的距离变换函数distanceTransform。
     - 使用合适的测试图像进行测试，将距离场可视化输出。
+
+#### Exp 6 (2021.10.29 -- 2021.11.2)
+
+1. 霍夫变换
+    - 实现基于霍夫变换的图像圆检测。
+    - 边缘检测可以用opencv的canny函数。
+    - 尝试对其准确率和效率进行优化实现。
