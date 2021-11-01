@@ -4,13 +4,21 @@
 using namespace std;
 using namespace cv;
 
-const char *img_path = "/home/liyang/study/cv/Circle Detection Dataset/2.jpg";
+const char *img_path = "/home/liyang/study/cv/Circle Detection Dataset/7.jpg";
 
 Mat img;
+const int SHIFT = 10, ONE = 1 << SHIFT;//为了提高运算精度，定义一个数值的位移量
+int min_dist, cannyThreshold, accThreshold;
 
 bool cmp(Point &a, Point &b) {//点的位置从大到小排序
     if (a.y != b.y) return a.y > b.y;
     return a.x > b.x;
+}
+
+void showImage(Mat &image, const char *windowName, int location_x, int location_y) {
+    namedWindow(windowName, WINDOW_AUTOSIZE);
+    moveWindow(windowName, location_x, location_y);
+    imshow(windowName, image);
 }
 
 void circleDetection(Mat &src, float minDist, int canny_threshold, int acc_threshold) {
@@ -22,15 +30,19 @@ void circleDetection(Mat &src, float minDist, int canny_threshold, int acc_thres
 
     Mat src_gray;//转换为灰度图
     cvtColor(src, src_gray, COLOR_RGB2GRAY);
+    GaussianBlur(src_gray, src_gray, Size(5, 5), 2, 2);
 
     Mat src_edges;//得到边缘图像
     Canny(src_gray, src_edges, MAX(canny_threshold / 2, 1), canny_threshold);
+    threshold(src_edges, src_edges, 100, 255, THRESH_BINARY);//二值化
+
+    showImage(src_edges, "edges", 600, 200);
 
     Mat dx, dy;//水平梯度和垂直梯度
     Sobel(src_gray, dx, CV_16SC1, 1, 0);
     Sobel(src_gray, dy, CV_16SC1, 0, 1);
 
-    Mat accum = Mat::zeros(rows + 2, cols + 2, CV_32SC1);//累加器矩阵
+    Mat accum = Mat::zeros(rows, cols, CV_32SC1);//累加器矩阵
     vector<Point> nz, centers;//圆周序列和圆心序列
     int max_r = MAX(rows, cols);
 
@@ -46,14 +58,14 @@ void circleDetection(Mat &src, float minDist, int canny_threshold, int acc_thres
             assert(gradient >= 1);
 
             //水平和垂直方向的位移量（即梯度方向）
-            int step_x = cvRound(current_dx * 0.1f / gradient);
-            int step_y = cvRound(current_dy * 0.1f / gradient);
+            int step_x = cvRound(current_dx * ONE / gradient);
+            int step_y = cvRound(current_dy * ONE / gradient);
 
             //在当前点沿着梯度方向和梯度的反方向对经过的像素进行累加
-            int x0 = x, y0 = y;
+            int x0 = cvRound(x * ONE), y0 = cvRound(y * ONE);
             for (int ori = 0; ori < 2; ori++) {//两个方向
-                int x1 = x0 + step_x, y1 = y0 + step_y;
-                for (int r = 0; r <= max_r; x1 += step_x, y1 += step_y, r++) {
+                for (int r = 0; r <= max_r; x0 += step_x, y0 += step_y, r++) {
+                    int x1 = x0 >> SHIFT, y1 = y0 >> SHIFT;
                     if (x1 > cols - 1 || x1 < 0 || y1 > rows - 1 || y1 < 0) break;
                     accum.at<int>(y1, x1)++;
                 }
@@ -130,10 +142,11 @@ void circleDetection(Mat &src, float minDist, int canny_threshold, int acc_thres
     }
     cout << "circle num:" << circles.size() << '\n';
 
-    string win2 = "detection";
-    namedWindow(win2, WINDOW_AUTOSIZE);
-    moveWindow(win2, 800, 200);
-    imshow(win2, processed);
+    showImage(processed, "detection", 800, 200);
+}
+
+void controller(int, void *) {
+    circleDetection(img, (float) min_dist, cannyThreshold, accThreshold);
 }
 
 int main() {
@@ -142,11 +155,16 @@ int main() {
     img = imread(img_path);
 
     string win1 = "origin";
-    namedWindow(win1, WINDOW_AUTOSIZE);
-    moveWindow(win1, 200, 200);
-    imshow(win1, img);
+    showImage(img, "origin", 200, 200);
 
-    circleDetection(img, (float) img.rows / 20, 100, 60);
+    createTrackbar("min dist", win1, &min_dist, MAX(img.rows, img.cols), controller);
+    createTrackbar("canny threshold", win1, &cannyThreshold, 500, controller);
+    createTrackbar("acc threshold", win1, &accThreshold, 500, controller);
+
+    min_dist = MIN(img.rows, img.cols) / 50;
+    cannyThreshold = 100;
+    accThreshold = 60;
+    controller(0, nullptr);
 
     waitKey(0);
     destroyAllWindows();
