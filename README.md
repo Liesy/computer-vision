@@ -42,6 +42,7 @@
     - Reference3：[霍夫梯度法1](https://www.cnblogs.com/bjxqmy/p/12333022.html)
     - Reference4：[霍夫梯度法2](https://blog.csdn.net/qq_41498261/article/details/103104035)
     - Reference5：[HoughCircles源码分析](https://blog.csdn.net/zhaocj/article/details/50454847)
+    - Reference6：[OpenCV类型CV_32F和CV_32FC1之间的区别](https://www.askgo.cn/question/1476)
 
 ### Experiment Content
 
