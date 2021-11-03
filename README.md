@@ -43,6 +43,11 @@
     - Reference4：[霍夫梯度法2](https://blog.csdn.net/qq_41498261/article/details/103104035)
     - Reference5：[HoughCircles源码分析](https://blog.csdn.net/zhaocj/article/details/50454847)
     - Reference6：[OpenCV类型CV_32F和CV_32FC1之间的区别](https://www.askgo.cn/question/1476)
+- 2021-11-3 experiment 7
+    - Reference1：[为什么OpenCV读取的图像格式是BGR](https://cloud.tencent.com/developer/article/1473677)
+    - Reference2：[Harris角点检测原理详解](https://blog.csdn.net/lwzkiller/article/details/54633670)
+    - Reference3：[Harris角点检测C++实现](https://www.jianshu.com/p/44e63f7f7f4f)
+    - Reference4：[OpenCV角点检测之Harris角点检测](https://blog.csdn.net/poem_qianmo/article/details/29356187)
 
 ### Experiment Content
 
@@ -104,3 +109,9 @@
     - 实现基于霍夫变换的图像圆检测。
     - 边缘检测可以用opencv的canny函数。
     - 尝试对其准确率和效率进行优化实现。
+
+#### Exp 7 (2021.11.5 -- 2021.11.9)
+
+1. Harris角点检测
+    - 实现Harris角点检测算法。
+    - 与OpenCV的cornerHarris函数的结果和计算速度进行比较。
