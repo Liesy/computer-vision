@@ -48,6 +48,7 @@
     - Reference2：[Harris角点检测原理详解](https://blog.csdn.net/lwzkiller/article/details/54633670)
     - Reference3：[Harris角点检测C++实现](https://www.jianshu.com/p/44e63f7f7f4f)
     - Reference4：[OpenCV角点检测之Harris角点检测](https://blog.csdn.net/poem_qianmo/article/details/29356187)
+    - Reference5：[Harris角点检测原理详解及源码分析](https://blog.csdn.net/qq_37059483/article/details/77836239)
 
 ### Experiment Content
 
