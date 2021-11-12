@@ -49,6 +49,9 @@
     - Reference3：[Harris角点检测C++实现](https://www.jianshu.com/p/44e63f7f7f4f)
     - Reference4：[OpenCV角点检测之Harris角点检测](https://blog.csdn.net/poem_qianmo/article/details/29356187)
     - Reference5：[Harris角点检测原理详解及源码分析](https://blog.csdn.net/qq_37059483/article/details/77836239)
+- 2021-11-12 experiment 8
+    - Reference1：[特征点提取和匹配](https://blog.csdn.net/jiangjiao4726/article/details/78385409)
+    - Reference2：[特征检测和匹配方法汇总](https://www.cnblogs.com/skyfsm/p/7401523.html)
 
 ### Experiment Content
 
@@ -116,3 +119,11 @@
 1. Harris角点检测
     - 实现Harris角点检测算法。
     - 与OpenCV的cornerHarris函数的结果和计算速度进行比较。
+
+#### Exp 8 (2021.11.12 -- 2021.11.16)
+
+1. 测试OpenCV中的SIFT, SURF, ORB等特征检测与匹配的方法
+    - 将检测到的特征点和匹配关系进行可视化输出。
+    - 比较不同方法的效率、效果等。
+
+2. 阅读[论文](https://link.springer.com/article/10.1023/B:VISI.0000029664.99615.94)
