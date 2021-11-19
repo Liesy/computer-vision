@@ -53,6 +53,11 @@
     - Reference1：[特征点提取和匹配](https://blog.csdn.net/jiangjiao4726/article/details/78385409)
     - Reference2：[特征检测和匹配方法汇总](https://www.cnblogs.com/skyfsm/p/7401523.html)
     - Reference3：[OpenCV提取ORB特征并匹配](https://www.jianshu.com/p/420f8211d1cb)
+- 2021-11-19 experiment 9
+    - Reference1：[一个窗口显示多张图片](https://blog.csdn.net/guoyunfei123/article/details/81191395)
+    - Reference2：[模板匹配cv::matchTemplate()详解](https://blog.csdn.net/guduruyu/article/details/69231259)
+    - Reference3：[OpenCV模板匹配函数matchTemplate详解](https://www.cnblogs.com/yysky/p/10497858.html)
+    - Reference4：[模板匹配](https://blog.csdn.net/liyuanbhu/article/details/49837661)
 
 ### Experiment Content
 
