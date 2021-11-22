@@ -58,6 +58,7 @@
     - Reference2：[模板匹配cv::matchTemplate()详解](https://blog.csdn.net/guduruyu/article/details/69231259)
     - Reference3：[OpenCV模板匹配函数matchTemplate详解](https://www.cnblogs.com/yysky/p/10497858.html)
     - Reference4：[模板匹配](https://blog.csdn.net/liyuanbhu/article/details/49837661)
+    - Reference5：[改变图像的对比度和亮度](https://blog.csdn.net/wc781708249/article/details/78448280)
 
 ### Experiment Content
 
