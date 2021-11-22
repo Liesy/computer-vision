@@ -8,9 +8,11 @@ const char *img_path = "/home/liyang/图片/sunflower.png";
 const char *img_template_path = "/home/liyang/图片/sunflower_tongue.png";
 
 Mat src_img, src_template;
+Mat img_tp;
+int alpha, beta, width, height;
 
-void mergeImg(vector<Mat> &vec, Mat &dst, int capability = 2, bool scalar = true, int maxNum = 6) {
-    //多张图片（至多maxNum个）合并为一张，每行capability个，scalar = true时将图片按capability放缩
+void mergeImg(vector<Mat> &vec, Mat &dst, bool scale = true, int capability = 2, int maxNum = 6) {
+    //多张图片（至多maxNum个）合并为一张，每行capability个，scale = true时将图片按capability放缩
     int count = (int) vec.size();
     assert(count > 0 && count <= maxNum);
     int rowScale = count % capability == 0 ? count / capability : count / capability + 1;
@@ -18,7 +20,7 @@ void mergeImg(vector<Mat> &vec, Mat &dst, int capability = 2, bool scalar = true
     int maxCol = 0, maxRow = 0;
     for (auto &img:vec) {
         int col = img.cols, row = img.rows;
-        if (scalar) col /= colScale, row /= colScale;
+        if (scale) col /= colScale, row /= colScale;
         resize(img, img, Size(col, row));
         maxCol = max(col, maxCol), maxRow = max(row, maxRow);
     }
@@ -57,21 +59,52 @@ void matching(Mat &src, Mat &temp, Mat &dst, int method) {
     rectangle(dst, maxLoc, Point(maxLoc.x + temp.cols, maxLoc.y + temp.rows), Scalar(0, 0, 255), 5);
 }
 
+void brightnessController(int, void *) {
+    src_img.convertTo(img_tp, -1, alpha * 0.1, beta);
+
+    Mat res_TM_SQDIFF, res_TM_CCOEFF_NORMED;
+    matching(img_tp, src_template, res_TM_SQDIFF, TM_SQDIFF);
+    matching(img_tp, src_template, res_TM_CCOEFF_NORMED, TM_CCOEFF_NORMED);
+
+    vector<Mat> images(2);
+    images[0] = res_TM_SQDIFF, images[1] = res_TM_CCOEFF_NORMED;
+    Mat show;
+    mergeImg(images, show, false);
+    showImage(show, "change contrast and brightness", 600, 0);
+}
+
+void sizeController(int, void *) {
+    int col = width * 10 > src_template.cols ? width * 10 : src_img.cols;
+    int row = height * 10 > src_template.rows ? height * 10 : src_img.rows;
+    resize(src_img, img_tp, Size(col, row));
+
+    Mat res_TM_SQDIFF, res_TM_CCOEFF_NORMED;
+    matching(img_tp, src_template, res_TM_SQDIFF, TM_SQDIFF);
+    matching(img_tp, src_template, res_TM_CCOEFF_NORMED, TM_CCOEFF_NORMED);
+
+    vector<Mat> images(2);
+    images[0] = res_TM_SQDIFF, images[1] = res_TM_CCOEFF_NORMED;
+    Mat show;
+    mergeImg(images, show, false);
+    showImage(show, "change size", 600, 500);
+}
+
 int main() {
     ios::sync_with_stdio(false);
 
     src_img = imread(img_path);
     src_template = imread(img_template_path);
+    showImage(src_img, "original image", 100, 0);
     showImage(src_template, "template");
 
-    Mat res;
-    matching(src_img, src_template, res, TM_CCOEFF_NORMED);
-
-    vector<Mat> images(2);
-    images[0] = src_img, images[1] = res;
-    Mat ccorrNormed;
-    mergeImg(images, ccorrNormed, 3, false);
-    showImage(ccorrNormed, "TM_CCOEFF_NORMED", 200, 200);
+    alpha = 10, beta = 0;
+    width = src_img.cols / 10, height = src_img.rows / 10;
+    createTrackbar("alpha*0.1", "original image", &alpha, 100, brightnessController);
+    createTrackbar("beta", "original image", &beta, 100, brightnessController);
+    createTrackbar("width*10", "original image", &width, 100, sizeController);
+    createTrackbar("height*10", "original image", &height, 100, sizeController);
+    brightnessController(0, nullptr);
+    sizeController(0, nullptr);
 
     waitKey(0);
     destroyAllWindows();
