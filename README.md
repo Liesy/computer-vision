@@ -59,6 +59,10 @@
     - Reference3：[OpenCV模板匹配函数matchTemplate详解](https://blog.csdn.net/qq_30815237/article/details/86812716)
     - Reference4：[模板匹配](https://blog.csdn.net/liyuanbhu/article/details/49837661)
     - Reference5：[改变图像的对比度和亮度](https://blog.csdn.net/wc781708249/article/details/78448280)
+- 2021-11-25 experiment 10
+    - Reference1：[利用RANSAC实现全景图像拼接](https://blog.csdn.net/weixin_44525231/article/details/105065477?spm=1001.2014.3001.5501)
+    - Reference2：[图像拼接处理](https://www.cnblogs.com/cenyan/p/12557065.html)
+    - Reference3：[图像拼接](https://blog.csdn.net/weixin_44500303/article/details/116060201)
 
 ### Experiment Content
 
