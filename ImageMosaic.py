@@ -38,8 +38,8 @@ def get_matches_homo(kps_left, kps_right, desc_left, desc_right):
     """
     matches, good = [], []
     for m, n in raw_matches:
-        if m.distance < 0.7 * n.distance:
-            good.append([m])
+        if m.distance < 0.5 * n.distance:
+            good.append(m)
             matches.append((m.queryIdx, m.trainIdx))
 
     kps_left = np.float32([kp.pt for kp in kps_left])
@@ -47,10 +47,12 @@ def get_matches_homo(kps_left, kps_right, desc_left, desc_right):
     if len(matches) > 4:
         pts_left = np.float32([kps_left[i] for i, _ in matches])
         pts_right = np.float32([kps_right[j] for _, j in matches])
-        homo, _ = cv2.findHomography(pts_left, pts_right, cv2.RANSAC)
         """
-        得到的是图像1到图像2的变换矩阵，即是以图像2的坐标系为参考坐标系的
+        注意这里的参数顺序
+        cv2.findHomography(pts_right, pts_left, cv2.RANSAC)
+        src是right，dst是left，得到的是src到dst的变换矩阵，即是以dst的坐标系为参考坐标系的
         """
+        homo, _ = cv2.findHomography(pts_right, pts_left, cv2.RANSAC)
         return good, homo
 
     return None
@@ -66,7 +68,6 @@ def mosaic(img_left, img_right, homo):
     """
     img_mosaic = np.zeros((max(h_left, h_right), w_left + w_right, 3), dtype='uint8')
     img_mosaic[0:h_right, 0:w_right] = img_right
-    show_image(img_mosaic, "transform")
     img_mosaic = cv2.warpPerspective(img_mosaic, homo, (img_mosaic.shape[1], img_mosaic.shape[0]))
     img_mosaic[0:h_left, 0:w_left] = img_left
     return img_mosaic
