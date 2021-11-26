@@ -15,8 +15,7 @@
 
 - 2021-9-8 init commit.
 - 2021-9-17 experiment 1
-- 2021-9-21
-  reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
+- 2021-9-21 reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
 - 2021-9-24 experiment 2
     - Reference1：[理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)
     - Reference2：[理解opencv中的双线性插值](https://www.cnblogs.com/wxl845235800/p/9608736.html)
@@ -63,6 +62,7 @@
     - Reference1：[利用RANSAC实现全景图像拼接](https://blog.csdn.net/weixin_44525231/article/details/105065477?spm=1001.2014.3001.5501)
     - Reference2：[图像拼接处理](https://www.cnblogs.com/cenyan/p/12557065.html)
     - Reference3：[图像拼接](https://blog.csdn.net/weixin_44500303/article/details/116060201)
+    - Reference4：[python+opencv实现图像特征检测，图像拼接](https://blog.csdn.net/qq_44019424/article/details/106010362)
 
 ### Experiment Content
 
