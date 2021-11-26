@@ -74,8 +74,8 @@ def mosaic(img_left, img_right, homo):
 
 
 def main():
-    img_left = cv2.imread("/home/liyang/图片/wbb_left.png", cv2.WINDOW_AUTOSIZE)
-    img_right = cv2.imread("/home/liyang/图片/wbb_right.png", cv2.WINDOW_AUTOSIZE)
+    img_left = cv2.imread("/home/liyang/图片/left.png", cv2.WINDOW_AUTOSIZE)
+    img_right = cv2.imread("/home/liyang/图片/right.png", cv2.WINDOW_AUTOSIZE)
 
     kps_left, desc_left = detect(img_left)
     kps_right, desc_right = detect(img_right)
