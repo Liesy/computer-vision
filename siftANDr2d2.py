@@ -84,7 +84,7 @@ def main():
                 os.path.join(args.r2d2_path, "extract.py"), os.path.join(args.r2d2_path, "models/r2d2_WASF_N16.pt"),
                 img_path[i])
             os.system(command)
-        r2d2_dict[img_name[i]] = img_path[i] + ".r2d2"
+        r2d2_dict[img_name[i]] = r2d2_path
 
     sift_match, r2d2_match = matching(img_name, img_dict, r2d2_dict)
     show_image(sift_match, "sift", 200, 200)
