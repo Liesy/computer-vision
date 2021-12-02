@@ -16,9 +16,8 @@ def get_sift_desc(img):
     - Param: image
     - Return: tuple (key points, descriptor)
     """
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) if img.shape[-1] == 3 else img
-    sift = cv2.xfeatures2d.SIFT_create(2000)
-    key_points, descriptor = sift.detectAndCompute(gray, None)
+    sift = cv2.xfeatures2d.SIFT_create(5000)
+    key_points, descriptor = sift.detectAndCompute(img, None)
     return key_points, descriptor
 
 
@@ -28,13 +27,16 @@ def get_r2d2_desc(file):
     - Return: tuple (key points, descriptor)
     """
     r2d2_file = np.load(file)
-    return r2d2_file["keypoints"], r2d2_file["descriptors"]
+    key_points_arr = r2d2_file["keypoints"]
+    key_points = [cv2.KeyPoint(key_points_arr[i][0], key_points_arr[i][1], 1) for i in range(key_points_arr.shape[0])]
+    descriptor = r2d2_file["descriptors"]
+    return key_points, descriptor
 
 
 def get_match_img(imgs, key_pts, desc, method):
     matcher = cv2.DescriptorMatcher_create("BruteForce")
     raw_matches = matcher.knnMatch(desc[0], desc[1], 2)
-    print("number of raw matches for %s: %d", (method, len(raw_matches)))
+    print("number of raw matches for %s: %d" % (method, len(raw_matches)))
 
     good = []
     for m, n in raw_matches:
@@ -76,10 +78,13 @@ def main():
     img_dict, r2d2_dict = {}, {}
     for i in range(len(img_name)):
         img_dict[img_name[i]] = cv2.imread(img_path[i], cv2.WINDOW_AUTOSIZE)
-        command = "python %s --model models/r2d2_WASF_N16.pt --images %s --top-k 5000" % (
-            os.path.join(args.r2d2_path, "extract.py"), img_path[i])
-        os.system(command)
-        r2d2_dict[img_name[i]] = img_path[i] + "/" + img_name[i] + ".r2d2"
+        r2d2_path = img_path[i] + ".r2d2"
+        if not os.path.exists(r2d2_path):
+            command = "python %s --model %s --images %s --top-k 5000" % (
+                os.path.join(args.r2d2_path, "extract.py"), os.path.join(args.r2d2_path, "models/r2d2_WASF_N16.pt"),
+                img_path[i])
+            os.system(command)
+        r2d2_dict[img_name[i]] = img_path[i] + ".r2d2"
 
     sift_match, r2d2_match = matching(img_name, img_dict, r2d2_dict)
     show_image(sift_match, "sift", 200, 200)
@@ -96,7 +101,7 @@ if __name__ == '__main__':
     parser.add_argument("--add_img",
                         type=str,
                         action="append",
-                        default=["", "", ""],
+                        default=["sunflower.png", "sunflower_original.png"],
                         help="add images, such as --add_img=1.png --add_img=2.png will add two images to list.")
     args = parser.parse_args()
     print(args)
