@@ -11,58 +11,60 @@
 - School of Computer Science and Technology
 - Shandong University
 
-### Update Log
+### Change Log
 
 - 2021-9-8 init commit.
-- 2021-9-17 experiment 1
+- 2021-9-17 experiment 1 (c++ & python)
 - 2021-9-21 reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
-- 2021-9-24 experiment 2
+- 2021-9-24 experiment 2 (c++)
     - Reference1：[理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)
     - Reference2：[理解opencv中的双线性插值](https://www.cnblogs.com/wxl845235800/p/9608736.html)
-- 2021-10-10 experiment 3
+- 2021-10-10 experiment 3 (c++)
     - Reference1：[copyMakeBorder函数详解](https://blog.csdn.net/qq_36560894/article/details/105416273)
     - Reference2：[高斯滤波(GaussianFilter)原理及C++实现](https://blog.csdn.net/weixin_40647819/article/details/89742936)
     - Reference3：[积分图实现快速均值滤波](https://blog.csdn.net/weixin_40647819/article/details/88775598)
     - Reference4：[OpenCV图像数据类型](https://www.jianshu.com/p/437c5031615c)
-- 2021-10-15 experiment 4-1
+- 2021-10-15 experiment 4-1 (c++)
     - Reference1：[鼠标响应setMouseCallback的用法](https://blog.csdn.net/qq_29540745/article/details/52562101)
     - Reference2：[基于直方图的目标跟踪](https://github.com/devWangBin/CV-image_processing)
     - Reference3：[RGB三通道直方图的计算与绘制](https://blog.csdn.net/Derical/article/details/108887966)
     - Reference4：[直方图匹配：巴氏系数](https://blog.csdn.net/jameschen9051/article/details/95895256)
-- 2021-10-22 experiment 5
+- 2021-10-22 experiment 5 (c++)
     - Reference1：[种子填充算法](https://www.bbsmax.com/A/amd0AVWzge/)
     - Reference2：[连通区域快速标记的two-pass算法及其实现](https://www.cnblogs.com/riddick/p/8280883.html)
     - Reference3：[二值图连通域快速标记算法](https://www.cnblogs.com/ailitao/p/11787513.html)
     - Reference4：[OpenCV连通区域分析](https://blog.csdn.net/icvpr/article/details/10259577)
     - Reference5：[OpenCV距离变换函数：distanceTransform](https://www.jianshu.com/p/77a773d97987)
-- 2021-10-29 experiment 6
+- 2021-10-29 experiment 6 (c++)
     - Reference1：[cvtColor和convertTo函数的区别](https://blog.csdn.net/qq_22764813/article/details/52135686)
     - Reference2：[霍夫圆检测](https://zhuanlan.zhihu.com/p/134452506)
     - Reference3：[霍夫梯度法1](https://www.cnblogs.com/bjxqmy/p/12333022.html)
     - Reference4：[霍夫梯度法2](https://blog.csdn.net/qq_41498261/article/details/103104035)
     - Reference5：[HoughCircles源码分析](https://blog.csdn.net/zhaocj/article/details/50454847)
     - Reference6：[OpenCV类型CV_32F和CV_32FC1之间的区别](https://www.askgo.cn/question/1476)
-- 2021-11-3 experiment 7
+- 2021-11-3 experiment 7 (c++)
     - Reference1：[为什么OpenCV读取的图像格式是BGR](https://cloud.tencent.com/developer/article/1473677)
     - Reference2：[Harris角点检测原理详解](https://blog.csdn.net/lwzkiller/article/details/54633670)
     - Reference3：[Harris角点检测C++实现](https://www.jianshu.com/p/44e63f7f7f4f)
     - Reference4：[OpenCV角点检测之Harris角点检测](https://blog.csdn.net/poem_qianmo/article/details/29356187)
     - Reference5：[Harris角点检测原理详解及源码分析](https://blog.csdn.net/qq_37059483/article/details/77836239)
-- 2021-11-12 experiment 8
+- 2021-11-12 experiment 8 (c++)
     - Reference1：[特征点提取和匹配](https://blog.csdn.net/jiangjiao4726/article/details/78385409)
     - Reference2：[特征检测和匹配方法汇总](https://www.cnblogs.com/skyfsm/p/7401523.html)
     - Reference3：[OpenCV提取ORB特征并匹配](https://www.jianshu.com/p/420f8211d1cb)
-- 2021-11-19 experiment 9
+- 2021-11-19 experiment 9 (c++)
     - Reference1：[一个窗口显示多张图片](https://blog.csdn.net/guoyunfei123/article/details/81191395)
     - Reference2：[模板匹配cv::matchTemplate()详解](https://blog.csdn.net/guduruyu/article/details/69231259)
     - Reference3：[OpenCV模板匹配函数matchTemplate详解](https://blog.csdn.net/qq_30815237/article/details/86812716)
     - Reference4：[模板匹配](https://blog.csdn.net/liyuanbhu/article/details/49837661)
     - Reference5：[改变图像的对比度和亮度](https://blog.csdn.net/wc781708249/article/details/78448280)
-- 2021-11-25 experiment 10
+- 2021-11-25 experiment 10  (python)
     - Reference1：[利用RANSAC实现全景图像拼接](https://blog.csdn.net/weixin_44525231/article/details/105065477?spm=1001.2014.3001.5501)
     - Reference2：[图像拼接处理](https://www.cnblogs.com/cenyan/p/12557065.html)
     - Reference3：[图像拼接](https://blog.csdn.net/weixin_44500303/article/details/116060201)
     - Reference4：[python+opencv实现图像特征检测，图像拼接](https://blog.csdn.net/qq_44019424/article/details/106010362)
+- 2021-12-2 experiment 11 (python)
+    - Reference1：[R2D2代码和预训练模型](https://github.com/naver/r2d2)
 
 ### Experiment Content
 
@@ -150,3 +152,9 @@
 1. 基于OpenCV实现图像拼接。
     - 可以对两张或更多的输入图像，将图像对齐后拼接成一张全景图。
     - 对影响拼接效果的各种因素（特征匹配、相机位移、场景几何等）拍摄图像进行测试。
+
+#### Exp 11 (2021.12.3 -- 2021.12.7)
+
+1. 设计实验，对比SIFT和R2D2特征匹配的效果。
+    - 重点对比分析特征的旋转不变性、尺度不变性。
+    - 实验数据可以自己构建，也可以用公开数据集。
