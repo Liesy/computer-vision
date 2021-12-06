@@ -28,7 +28,8 @@ def get_r2d2_desc(file):
     """
     r2d2_file = np.load(file)
     key_points_arr = r2d2_file["keypoints"]
-    key_points = [cv2.KeyPoint(key_points_arr[i][0], key_points_arr[i][1], 1) for i in range(key_points_arr.shape[0])]
+    key_points = [cv2.KeyPoint(key_points_arr[i][0], key_points_arr[i][1], key_points_arr[i][2]) for i in
+                  range(key_points_arr.shape[0])]
     descriptor = r2d2_file["descriptors"]
     return key_points, descriptor
 
