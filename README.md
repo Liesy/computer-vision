@@ -1,6 +1,4 @@
-## Computer Vision Repo
-
----
+# Computer Vision
 
 **Star it if it's useful for you! Thanks!**
 
@@ -158,3 +156,10 @@
 1. 设计实验，对比SIFT和R2D2特征匹配的效果。
     - 重点对比分析特征的旋转不变性、尺度不变性。
     - 实验数据可以自己构建，也可以用公开数据集。
+
+#### Exp 11 (2021.12.10 -- finial)
+
+1. 实现实时平面跟踪
+    - 速度达到实时（25帧/秒以上）。
+    - 跟踪稳定，不要有明显的错误和抖动。
+    - 尝试结合连续特征跟踪（KLT方法，cv::calcOpticalFlowPyrLK）改善速度和稳定性。
