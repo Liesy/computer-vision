@@ -13,7 +13,8 @@
 
 - 2021-9-8 init commit.
 - 2021-9-17 experiment 1 (c++ & python)
-- 2021-9-21 reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
+- 2021-9-21
+  reference [OpenCV-Python Tutorials](https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_tutorials.html)
 - 2021-9-24 experiment 2 (c++)
     - Reference1：[理解双线性插值](https://zhuanlan.zhihu.com/p/110754637)
     - Reference2：[理解opencv中的双线性插值](https://www.cnblogs.com/wxl845235800/p/9608736.html)
@@ -63,6 +64,12 @@
     - Reference4：[python+opencv实现图像特征检测，图像拼接](https://blog.csdn.net/qq_44019424/article/details/106010362)
 - 2021-12-2 experiment 11 (python)
     - Reference1：[R2D2代码和预训练模型](https://github.com/naver/r2d2)
+
+- 2021-12-10 experiment 12 (c++)
+    - Reference1：[【翻跳】Bunny！你能跟上我的心跳吗？（直播剪辑）](https://www.bilibili.com/video/BV12X4y1w7P2)
+    - Reference2：[OpenCV单目标跟踪](https://blog.csdn.net/LuohenYJ/article/details/89029816)
+    - Reference3：[光流金字塔calcOpticalFlowPyrLK进行特征点跟踪](https://blog.csdn.net/codedoctor/article/details/79175683)
+    - Reference4：[三维重建OpenCV+C++（相机标定+对极约束+三角测量）](https://blog.csdn.net/weixin_44524040/article/details/104287032)
 
 ### Experiment Content
 
