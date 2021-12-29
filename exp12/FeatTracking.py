@@ -66,7 +66,11 @@ def target_tracking(file: str) -> None:
     global k_roi, d_roi
     tracker = cv.TrackerKCF_create()
     video = cv.VideoCapture(file)
-    pause_time = int(1000 / video.get(cv.CAP_PROP_FPS))
+    video_fps = video.get(cv.CAP_PROP_FPS)
+    pause_time = int(1000 / video_fps)
+    width, height = int(video.get(cv.CAP_PROP_FRAME_WIDTH)), int(video.get(cv.CAP_PROP_FRAME_HEIGHT))
+    four_cc = cv.VideoWriter_fourcc(*'MP4V')
+    out = cv.VideoWriter('/home/liyang/视频/AvA.mp4', four_cc, video_fps, (width * 2, height))
     while True:
         ok, frame = video.read()
         if not ok:
@@ -87,6 +91,7 @@ def target_tracking(file: str) -> None:
             captured = True
         if not captured:
             show_image(frame, 'video')
+            out.write(merge_image(frame, frame))
             continue
 
         ok, bbox = tracker.update(frame)
@@ -100,7 +105,10 @@ def target_tracking(file: str) -> None:
         fps = cv.getTickFrequency() / (cv.getTickCount() - t)
         cv.putText(merge, f'FPS: {int(fps)}', (100, 50), cv.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50), 2)
 
+        out.write(merge)
         show_image(merge, 'video')
+    video.release()
+    out.release()
 
 
 def main():
